@@ -1,3 +1,24 @@
+Description
+-----------
+
+iwmap is a simple script focused on activities of wardriving
+
+
+To use iwmap
+------------
+
+   # cd path/to/iwmap
+   # bash iwmap
+
+
+Alternatively copy iwmap file on /usr/local/bin and run:
+
+   # iwmap
+
+
+Config
+------
+
 By default interface is setting to wlan0. If you use a different interface then open iwmap file and replace variable with your interface:
 
    WLAN="wlan0"
@@ -11,12 +32,4 @@ Variable settings:
   SU="sudo"	      # <- Super User
 
 
-To use iwmap:
 
-   # cd path/to/iwmap
-   # bash iwmap
-
-
-Alternatively copy iwmap on /usr/local/bin and run:
-
-   # iwmap
