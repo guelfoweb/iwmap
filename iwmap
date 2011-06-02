@@ -10,10 +10,10 @@
 #
 
 #-------------------#
-WLAN="wlan0"		# <- Interface type
-LOGFILE="iwmap.log"	# <- Logfile name
-SLEEP=10			# <- Delay in seconds
-SU="sudo"			# <- Super User
+WLAN="wlan0"        # <- Interface type
+LOGFILE="iwmap.log" # <- Logfile name
+SLEEP=10	    # <- Delay in seconds
+SU="sudo"	    # <- Super User
 #-------------------#
 
 TS=`date --utc --date now +%s`
