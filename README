@@ -24,7 +24,7 @@ By default interface is setting to wlan0. If you use a different interface then 
    WLAN="wlan0"
 
 
-Variable settings:
+Variable list:
 
   WLAN="wlan0"        # <- Interface type
   LOGFILE="iwmap.log" # <- Logfile name
