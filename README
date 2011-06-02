@@ -1,0 +1,22 @@
+By default interface is setting to wlan0. If you use a different interface then open iwmap file and replace variable with your interface:
+
+   WLAN="wlan0"
+
+
+Variable settings:
+
+  WLAN="wlan0"        # <- Interface type
+  LOGFILE="iwmap.log" # <- Logfile name
+  SLEEP=10	      # <- Delay in seconds
+  SU="sudo"	      # <- Super User
+
+
+To use iwmap:
+
+   # cd path/to/iwmap
+   # bash iwmap
+
+
+Alternatively copy iwmap on /usr/local/bin and run:
+
+   # iwmap
