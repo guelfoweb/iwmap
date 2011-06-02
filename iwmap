@@ -1,0 +1,72 @@
+#!/bin/bash
+
+#
+# ----------------------------------------------------------------------------
+# "THE BEER-WARE LICENSE" (Revision 42):
+# guelfoweb@gmail.com wrote this file. As long as you retain this notice you
+# can do whatever you want with this stuff. If we meet some day, and you think
+# this stuff is worth it, you can buy me a beer in return Gianni 'guelfoweb' Amato
+# ----------------------------------------------------------------------------
+#
+
+#-------------------#
+WLAN="wlan0"		# <- Interface type
+LOGFILE="iwmap.log"	# <- Logfile name
+SLEEP=10			# <- Delay in seconds
+SU="sudo"			# <- Super User
+#-------------------#
+
+TS=`date --utc --date now +%s`
+LOGTMP=".iwmap_$TS.tmp"
+FUCK="/dev/null"
+
+start(){
+	SCAN=`$SU iwlist $WLAN scanning 2> $FUCK | egrep 'Channel|Address|ESSID|Encryption|Group Cipher' | sed -e 's/Cell [0-9]* - Address: //g' \
+						-e 's/Channel://g' \
+						-e 's/Frequency://g' \
+						-e 's/GHz//g' \
+						-e 's/(Channel [0-9]*)//g' \
+						-e 's/Encryption key://g' \
+						-e 's/ESSID://g' \
+						-e 's/Group Cipher : //g' \
+						-e 's/^ *//g'`
+
+	for i in $SCAN;
+	do
+		echo -n $i | sed '/^\([0-9A-Z][0-9A-Z]:\)\{5\}[0-9A-Z][0-9A-Z]$/{x;p;x;}' >> $LOGTMP; echo -n "," >> $LOGTMP
+	done
+
+	if [ ! -f $LOGFILE ]; then > $LOGFILE; fi
+	
+	tail -n +2 $LOGTMP 2> $FUCK | sed 's/,$//g'| while read LINE;
+		do {
+			if [ ! "$LINE" = "" ]; then
+				ESSID=`echo "$LINE" | cut -d\" -f2 | sed 's/,/ /g'`
+				MACADDR=`echo $LINE | cut -d\, -f1`
+				CHANNEL=`echo $LINE | cut -d\, -f2`
+				FREQ=`echo $LINE | cut -d\, -f3`
+				KEY=`echo $LINE | cut -d\, -f4`
+				ESSID=`echo $LINE | awk -F  "\"" '{print $2}' | sed 's/,/ /g'`
+				ENC=`echo "$LINE" | awk -F  "\"" '{print $3}' | awk -F  "," '{print $2}'`
+				if [ "$ENC" = "" ]; then ENC="----"; fi
+				FOUND="$MACADDR,$CHANNEL,$FREQ,$KEY,$ENC,$ESSID"
+				DUPLICATE=`echo $FOUND | cut -d\, -f2,4,5,6`
+				GREPLINE=`cut -d\, -f2,4,5,6 $LOGFILE | grep "$DUPLICATE"`
+				if [ -z "$GREPLINE" ]; then
+					echo -e "$MACADDR \t $CHANNEL \t $FREQ \t $KEY \t $ENC \t $ESSID"
+					echo $FOUND >> $LOGFILE
+				fi
+			fi
+			}
+		done
+
+	rm $LOGTMP 2> $FUCK
+}
+
+RES="BEGIN"
+echo -e "MACADDRESS \t\t CH \t FREQ \t KEY \t ENCR \t ESSID"
+echo -e "---------- \t\t -- \t ---- \t --- \t ---- \t -----"
+while [ $RES != "END" ]; do
+	start
+	sleep $SLEEP
+done
