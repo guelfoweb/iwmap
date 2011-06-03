@@ -1,7 +1,8 @@
 DESCRIPTION
 ===========
 
-iwmap is a little bash script focused on wardriving activities.
+iwmap is a little bash script focused on wardriving activities. Collect all the Wi-Fi wireless networks in a log file (csv format) skipping duplicate.
+
 
 MACADDRESS 		 CH 	 FREQ 	 KEY 	 ENCR 	 ESSID
 ---------- 		 -- 	 ---- 	 --- 	 ---- 	 -----
