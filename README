@@ -1,17 +1,26 @@
 DESCRIPTION
------------
+===========
 
 iwmap is a little bash script focused on wardriving activities.
 
+MACADDRESS 		 CH 	 FREQ 	 KEY 	 ENCR 	 ESSID
+---------- 		 -- 	 ---- 	 --- 	 ---- 	 -----
+00:1D:A1:C1:B5:3D 	 1 	 2.412 	 on 	 TKIP 	 FASTWEB-1-XXXXXXXX
+00:21:2F:DE:CA:03 	 6 	 2.437 	 off 	 ---- 	 Free Public WiFi
+5D:D8:78:07:C4:CD 	 6 	 2.437 	 on 	 TKIP 	 NETGEAR
+64:84:E7:F2:42:30 	 11 	 2.462 	 on 	 TKIP 	 Alice-XXXXXX
+00:21:2E:FB:7E:38 	 6 	 2.437 	 on 	 TKIP 	 ICEGUEST
+00:1D:A2:BE:48:5D 	 1 	 2.412 	 on 	 TKIP 	 FASTWEB-1-YYYYYYY
+
 
 DOWNLOAD IWMAP
---------------
+==============
 
 git clone https://github.com/guelfoweb/iwmap.git
 
 
 TO USE IWMAP
-------------
+============
 
    # cd iwmap
    # bash iwmap
@@ -24,21 +33,9 @@ Alternatively, set executable permissions on iwmap file
    # iwmap
 
 
-OUTPUT EXAMPLE
---------------
-
-MACADDRESS 		 CH 	 FREQ 	 KEY 	 ENCR 	 ESSID
----------- 		 -- 	 ---- 	 --- 	 ---- 	 -----
-00:1D:A1:C1:B5:3D 	 1 	 2.412 	 on 	 TKIP 	 FASTWEB-1-XXXXXXXX
-00:21:2F:DE:CA:03 	 6 	 2.437 	 off 	 ---- 	 Free Public WiFi
-5D:D8:78:07:C4:CD 	 6 	 2.437 	 on 	 TKIP 	 NETGEAR
-64:84:E7:F2:42:30 	 11 	 2.462 	 on 	 TKIP 	 Alice-XXXXXX
-00:21:2E:FB:7E:38 	 6 	 2.437 	 on 	 TKIP 	 ICEGUEST
-00:1D:A2:BE:48:5D 	 1 	 2.412 	 on 	 TKIP 	 FASTWEB-1-YYYYYYY
-
 
 CONFIGURE
----------
+=========
 
 By default interface is setting to wlan0. If you use a different interface then open iwmap file and replace variable with your interface:
 
