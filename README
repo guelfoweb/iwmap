@@ -1,23 +1,31 @@
-Description
+DESCRIPTION
 -----------
 
 iwmap is a little bash script focused on wardriving activities.
 
 
-To use iwmap
+DOWNLOAD IWMAP
+--------------
+
+git clone https://github.com/guelfoweb/iwmap.git
+
+
+TO USE IWMAP
 ------------
 
-   # cd path/to/iwmap
+   # cd iwmap
    # bash iwmap
 
 
-Alternatively copy iwmap file on /usr/local/bin and run:
+Alternatively, set executable permissions on iwmap file
 
+   # cp iwmap /usr/local/bin/iwmap
+   # chmod a+x /usr/local/bin/iwmap
    # iwmap
 
 
-Output
-------
+OUTPUT EXAMPLE
+--------------
 
 MACADDRESS 		 CH 	 FREQ 	 KEY 	 ENCR 	 ESSID
 ---------- 		 -- 	 ---- 	 --- 	 ---- 	 -----
@@ -29,8 +37,8 @@ MACADDRESS 		 CH 	 FREQ 	 KEY 	 ENCR 	 ESSID
 00:1D:A2:BE:48:5D 	 1 	 2.412 	 on 	 TKIP 	 FASTWEB-1-YYYYYYY
 
 
-Config
-------
+CONFIGURE
+---------
 
 By default interface is setting to wlan0. If you use a different interface then open iwmap file and replace variable with your interface:
 
@@ -43,6 +51,3 @@ Variable list:
   LOGFILE="iwmap.log" # <- Logfile name
   SLEEP=10	      # <- Delay in seconds
   SU="sudo"	      # <- Super User
-
-
-
