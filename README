@@ -34,7 +34,6 @@ Alternatively, set executable permissions on iwmap file
    # iwmap
 
 
-
 CONFIGURE
 =========
 
@@ -49,3 +48,9 @@ Variable list:
   LOGFILE="iwmap.log" # <- Logfile name
   SLEEP=10	      # <- Delay in seconds
   SU="sudo"	      # <- Super User
+
+
+OTHER
+=====
+
+This script is currently maintained by Gianni 'guelfoweb' Amato, who can be contacted at guelfoweb@gmail.com. Suggestions and criticism are welcome.
